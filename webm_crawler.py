@@ -31,7 +31,7 @@ def get_webms(url):
     links = []
 
     for i in x:
-        if i['href'].endswith('webm') or i['href'].endswith('gif'):
+        if i['href'].endswith('.webm') or i['href'].endswith('.gif'):
             link = "https:" + i['href']
             if link not in links:
                 links.append(link)        

@@ -5,7 +5,7 @@ A simple tool to help saving 4chan stuff. It has 3 functions:
 - Save all the webms and gifs from a single thread
 - Take a full screenshot of a thread (Using chrome driver)
 
-## Requirements
+## Install Dependencies
 ```
 pip install bs4
 pip install requests
