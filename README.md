@@ -1,4 +1,7 @@
 # 4chan-downloader
+
+![alt](example/example.jpg)
+
 A simple tool to help saving 4chan stuff. It has 3 functions:
 
 - Save all the images from a single thread
