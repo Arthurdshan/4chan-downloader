@@ -7,8 +7,10 @@ def download_images(links):
     dir = input('\nSelect the name of the folder to be created: ').strip()
     try:
         os.mkdir(dir)
-    except:
-        pass
+    except OSError as exc:
+        print(exc)
+        return
+    
     print('\nDownload started.\n')
     i = 1
     for index, img_link in enumerate(links):        

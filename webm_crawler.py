@@ -7,8 +7,10 @@ def download_webms(links):
     dir = input('\nSelect the name of the folder to be created: ').strip()
     try:
         os.mkdir(dir)
-    except:
-        pass
+    except OSError as exc:
+        print(exc)
+        return
+    
     print('\nDownload started.\n')
     for link in links:
         # Getting the last string from the split
