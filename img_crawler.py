@@ -1,3 +1,4 @@
+import progressbar
 import requests as rq
 import os
 
@@ -10,18 +11,15 @@ def download_images(links):
     except OSError as exc:
         print(exc)
         return
-    
-    print('\nDownload started.\n')
-    i = 1
+    bar = progressbar.ProgressBar(max_value = len(links)).start()
     for index, img_link in enumerate(links):        
         img_data = rq.get(img_link).content
-        print('Downloading image : %s' %img_link)
         with open(dir + '/' + str(index + 1) + '.jpg', 'wb+') as f:
             f.write(img_data)
-        i += 1
         f.close()
-        print('Done.\n')
-    print("All images from the link were downloaded to: ", dir)
+        bar.update(index + 1)
+    bar.finish()
+    print("\nAll images from the link were downloaded to: ", dir)
 
 def get_images(url):    
     print('\nGetting images link..\n')
@@ -30,7 +28,7 @@ def get_images(url):
 
     links = []
     for i in x:
-        if i['href'].endswith('jpg') or i['href'].endswith('png'):
+        if i['href'].endswith('.jpg') or i['href'].endswith('.png'):
             link = "https:" + i['href']
             if link not in links:
                 links.append(link)

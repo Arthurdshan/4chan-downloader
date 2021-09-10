@@ -1,3 +1,4 @@
+import progressbar
 import requests as rq
 import os
 
@@ -10,18 +11,20 @@ def download_webms(links):
     except OSError as exc:
         print(exc)
         return
-    
-    print('\nDownload started.\n')
+    i = 1
+    bar = progressbar.ProgressBar(max_value = len(links)).start()
     for link in links:
         # Getting the last string from the split
         webm_name = link.split('/')[-1]    
-        print('Downloading: %s' %webm_name)
         r = rq.get(link, stream = True)
         with open(dir + '/' + webm_name, 'wb+') as f:
             for chunk in r.iter_content(chunk_size = 1024 * 1024):
                 if chunk:
                     f.write(chunk)
-        print('Done.\n')
+        i += 1
+        bar.update(i)
+        bar.finish()
+    bar.finish()
     print("All webms/gifs from the link were downloaded to: ", dir)
 
 def get_webms(url):

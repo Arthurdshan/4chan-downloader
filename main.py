@@ -2,6 +2,7 @@ from commons import *
 from img_crawler import *
 from webm_crawler import *
 from archiver import *
+from full_crawler import *
 
 logo()
 
@@ -10,9 +11,10 @@ def main():
 
     print('''
     1. Download images
-    2. Download webms + gifs
-    3. Archive thread
-    4. Exit
+    2. Download webms and gifs
+    3. Download all
+    4. Archive thread
+    5. Exit
     ''')
     
     choice = input('Choose an option: ').strip()
@@ -21,8 +23,10 @@ def main():
     elif choice == '2':
         get_webms(url)
     elif choice == '3':
-        get_screenshot(url)
+        scrap_everything(url)
     elif choice == '4':
+        get_screenshot(url)
+    elif choice == '5':
         exit()
     else:
         print('Invalid option.')
@@ -32,6 +36,7 @@ def main():
         logo()
         main()
     else:
+        print('\nByebye!')
         exit()
 
 if __name__ == '__main__':

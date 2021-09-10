@@ -11,6 +11,7 @@ pip install bs4
 pip install requests
 pip install selenium
 pip install webdriver_manager
+pip install progressbar2
 ```
 
 ## How to run
